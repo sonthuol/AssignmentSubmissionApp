@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import useLocalState from "./util/useLocalStorage";
 import Dashboard from "./pages/Dashboard";
 import Homepage from "./pages/Homepage";
+import Login from "./pages/Login";
+import PrivateRoute from "./pages/PrivateRoute";
 
 function App() {
   const [jwt, setJwt] = useLocalState("", "jwt");
@@ -29,7 +31,15 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Homepage />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/login" element={<Login />} />
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 }
