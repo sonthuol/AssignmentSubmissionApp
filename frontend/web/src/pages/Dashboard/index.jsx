@@ -43,7 +43,7 @@ export default function Dashboard() {
     <div style={{ margin: "2em" }}>
       {assignments ? (
         assignments.map((assignment) => (
-          <div>
+          <div key={assignment.id}>
             <Link to={`/assignments/${assignment.id}`}>
               Assignment Id: {assignment.id}
             </Link>
