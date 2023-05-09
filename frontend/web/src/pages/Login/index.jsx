@@ -81,7 +81,7 @@ export default function Login() {
             Submit
           </Button>
           <Button variant="secondary" size="lg" type="button">
-            Submit
+            Exit
           </Button>
         </Col>
       </Row>
