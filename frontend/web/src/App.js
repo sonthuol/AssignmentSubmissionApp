@@ -4,6 +4,7 @@ import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import PrivateRoute from "./pages/PrivateRoute";
 import AssignmentView from "./pages/AssignmentView";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
