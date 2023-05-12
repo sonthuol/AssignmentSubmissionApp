@@ -21,6 +21,7 @@ export default function AssignmentView() {
     githubUrl: "",
     branch: "",
   });
+  const [assignmentEnums, setAssignmentEnums] = useState([]);
   const assignmentId = params.id;
 
   const updateAssignment = (prop, value) => {
@@ -40,8 +41,9 @@ export default function AssignmentView() {
 
   useEffect(() => {
     ajax(`/api/assignments/${assignmentId}`, "GET", jwt).then(
-      (assignmentData) => {
-        setAssignment(assignmentData);
+      (assignmentRespsone) => {
+        setAssignment(assignmentRespsone.assignment);
+        setAssignmentEnums(assignmentRespsone.assignmentEnums);
       }
     );
   }, []);
@@ -72,12 +74,12 @@ export default function AssignmentView() {
                 variant="info"
                 title="Assignment 1"
               >
-                {["1", "2", "3", "4", "5"].map((assignmentNumber) => (
+                {assignmentEnums.map((assignmentEnum) => (
                   <Dropdown.Item
-                    eventKey={assignmentNumber}
-                    key={assignmentNumber}
+                    eventKey={assignmentEnum.assignmentNumber}
+                    key={assignmentEnum.assignmentNumber}
                   >
-                    Assignment {assignmentNumber}
+                    Assignment {assignmentEnum.assignmentNumber}
                   </Dropdown.Item>
                 ))}
               </DropdownButton>
